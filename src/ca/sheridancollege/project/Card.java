@@ -13,8 +13,10 @@ package ca.sheridancollege.project;
  */
 public abstract class Card {
     
-        public enum Suit{} ;
-        public enum Value{};
+        public enum Suit{BLUE,GREEN,RED,YELLOW} ;
+        public enum Value{ONE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,ZERO,DRAW_TWO,SKIP,WILD,REVERSE,WILD_DRAW4};
+       
+      
         private final Suit suit;
         private final Value value;
         
