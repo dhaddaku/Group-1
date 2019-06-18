@@ -11,26 +11,17 @@ package ca.sheridancollege.project;
  * should remember to add themselves as a modifier.
  * @author dancye, 2018
  */
-public abstract class Card {
+public abstract class Card 
+{
+    //default modifier for child classes
     
-        public enum Suit{BLUE,GREEN,RED,YELLOW} ;
-        public enum Value{ONE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,ZERO,DRAW_TWO,SKIP,WILD,REVERSE,WILD_DRAW4};
-       
-      
-        private final Suit suit;
-        private final Value value;
-        
-        public Card(Suit s, Value value)
-        {
-           suit =s;
-           this.value= value;
-        }
-	public Value getValue() {
-		return this.value;
-	}
+    /**
+     * Students should implement this method for their specific children classes 
+     * @return a String representation of a card. Could be an UNO card, a regular playing card etc.
+     */
+    
+    @Override
+    public abstract String toString();
+    
+}
 
-	
-	public Suit getSuit() {
-		return this.suit;
-}
-}
