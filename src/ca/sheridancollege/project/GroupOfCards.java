@@ -5,40 +5,55 @@
  */
 package ca.sheridancollege.project;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
+
 
 /**
  * A concrete class that represents any grouping of cards for a Game.
  * HINT, you might want to subclass this more than once.
  * The group of cards has a maximum size attribute which is flexible for reuse.
  * @author dancye
+ * MOdifierd: by JAskaran Singh ,
  */
-public class GroupOfCards 
+public class GroupOfCards extends CardDeck
 {
    
     //The group of cards, stored in an ArrayList
-    private ArrayList <Card> cards;
-    private int size;//the size of the grouping
+    public static CardUno[] cardOnHand ;
+    private final int size;//the size of the grouping
     
     public GroupOfCards(int givenSize)
     {
         size = givenSize;
     }
     
-    /**
-     * A method that will get the group of cards as an ArrayList
-     * @return the group of cards.
-     */
-    public ArrayList<Card> showCards()
+    public GroupOfCards()
     {
-        return cards;
+        size = 7;
+    }
+   
+    
+    public void distributeCards(){
+        setCardOnHand(new CardUno[getSize()]);
+        Random randIndex = new Random();
+        
+        for(int i=7; i<0;i--){
+          for(int a=0;a<108;a++){
+            int indexToDelete = randIndex.nextInt(super.handSize);
+              if(!cards[Math.min(a, indexToDelete)].equals(null)){
+                getCardOnHand()[i] = super.cards[Math.min(a, indexToDelete)];
+                super.cards[Math.min(a, indexToDelete)] = null;
+              }
+          }
+        }
+    }
+ 
+    public CardUno[] cardsInPlay(){
+        return getCardOnHand();
     }
     
-    public void shuffle()
-    {
-        Collections.shuffle(cards);
-    }
+    
+   
 
     /**
      * @return the size of the group of cards
@@ -48,10 +63,22 @@ public class GroupOfCards
     }
 
     /**
+     * @return the cardOnHand
+     */
+    public CardUno[] getCardOnHand() {
+        return cardOnHand;
+    }
+
+    /**
+     * @param cardOnHand the cardOnHand to set
+     */
+    public void setCardOnHand(CardUno[] cardOnHand) {
+        this.cardOnHand = cardOnHand;
+    }
+
+    /**
      * @param givenSize the max size for the group of cards
      */
-    public void setSize(int givenSize) {
-        size = givenSize;
-    }
+   
     
 }//end class

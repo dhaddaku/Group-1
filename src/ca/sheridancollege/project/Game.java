@@ -15,12 +15,14 @@ import java.util.ArrayList;
 public abstract class Game 
 {
     private final String gameName;//the title of the game
-    private ArrayList <Player> players;// the players of the game
+    public static ArrayList <Player> players;// the players of the game
+    private final int numOfPlayers ;//to get the number of player from the main mathod
     
-    public Game(String givenName)
+    public Game(String givenName, int num)
     {
         gameName = givenName;
         players = new ArrayList();
+        numOfPlayers = num;
     }
 
     /**
@@ -38,7 +40,10 @@ public abstract class Game
     {
         return players;
     }
-
+    //num of players
+    public int getNumOfPlayers(){
+        return this.numOfPlayers;
+    }
     /**
      * @param players the players of this game
      */
@@ -51,13 +56,13 @@ public abstract class Game
      * Play the game. This might be one method or many method calls depending
      * on your game.
      */
-    public abstract void play();
+   // public abstract void play();
     
     /**
      * When the game is over, use this method to declare and display a winning
      * player.
      */
-    public abstract void declareWinner();
+   // public abstract void declareWinner();
 
    
     
